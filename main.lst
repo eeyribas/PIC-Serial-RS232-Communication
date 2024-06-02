@@ -1,0 +1,250 @@
+CCS PCH C Compiler, Version 5.007, 61971               02-Haz-24 17:27
+
+               Filename:   D:\BACKUP\GitHub Calismalar\PIC-Serial(RS232)-Communication\main.lst
+
+               ROM used:   404 bytes (1%)
+                           Largest free fragment is 32364
+               RAM used:   5 (0%) at main() level
+                           14 (1%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0108
+.................... #include <18F4550.h> 
+.................... //////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... #device PIC18F4550 
+0004:  MOVF   0D,W
+0006:  CLRF   01
+0008:  SUBWF  0C,W
+000A:  BC    0012
+000C:  MOVFF  0C,00
+0010:  BRA    002A
+0012:  CLRF   00
+0014:  MOVLW  08
+0016:  MOVWF  0E
+0018:  RLCF   0C,F
+001A:  RLCF   00,F
+001C:  MOVF   0D,W
+001E:  SUBWF  00,W
+0020:  BTFSC  FD8.0
+0022:  MOVWF  00
+0024:  RLCF   01,F
+0026:  DECFSZ 0E,F
+0028:  BRA    0018
+002A:  RETURN 0
+002C:  MOVLW  20
+002E:  BTFSS  07.4
+0030:  MOVLW  30
+0032:  MOVWF  08
+0034:  MOVFF  06,00
+0038:  BTFSS  06.7
+003A:  BRA    004C
+003C:  COMF   00,F
+003E:  INCF   00,F
+0040:  MOVFF  00,06
+0044:  MOVLW  2D
+0046:  MOVWF  08
+0048:  BSF    07.7
+004A:  BSF    07.0
+004C:  MOVF   01,W
+004E:  MOVFF  06,0C
+0052:  MOVLW  64
+0054:  MOVWF  0D
+0056:  RCALL  0004
+0058:  MOVFF  00,06
+005C:  MOVLW  30
+005E:  ADDWF  01,W
+0060:  MOVWF  09
+0062:  MOVFF  06,0C
+0066:  MOVLW  0A
+0068:  MOVWF  0D
+006A:  RCALL  0004
+006C:  MOVLW  30
+006E:  ADDWF  00,W
+0070:  MOVWF  0B
+0072:  MOVLW  30
+0074:  ADDWF  01,W
+0076:  MOVWF  0A
+0078:  MOVFF  08,00
+007C:  MOVLW  30
+007E:  SUBWF  09,W
+0080:  BZ    008A
+0082:  BSF    07.1
+0084:  BTFSC  07.7
+0086:  BSF    07.2
+0088:  BRA    00AE
+008A:  MOVFF  08,09
+008E:  MOVLW  20
+0090:  MOVWF  08
+0092:  MOVLW  30
+0094:  SUBWF  0A,W
+0096:  BZ    00A0
+0098:  BSF    07.0
+009A:  BTFSC  07.7
+009C:  BSF    07.1
+009E:  BRA    00AE
+00A0:  BTFSS  FD8.2
+00A2:  BSF    07.0
+00A4:  BNZ   00AE
+00A6:  MOVFF  09,0A
+00AA:  MOVLW  20
+00AC:  MOVWF  09
+00AE:  BTFSC  07.2
+00B0:  BRA    00BC
+00B2:  BTFSC  07.1
+00B4:  BRA    00C4
+00B6:  BTFSC  07.0
+00B8:  BRA    00CC
+00BA:  BRA    00D4
+00BC:  MOVF   08,W
+00BE:  BTFSS  F9E.4
+00C0:  BRA    00BE
+00C2:  MOVWF  FAD
+00C4:  MOVF   09,W
+00C6:  BTFSS  F9E.4
+00C8:  BRA    00C6
+00CA:  MOVWF  FAD
+00CC:  MOVF   0A,W
+00CE:  BTFSS  F9E.4
+00D0:  BRA    00CE
+00D2:  MOVWF  FAD
+00D4:  MOVF   0B,W
+00D6:  BTFSS  F9E.4
+00D8:  BRA    00D6
+00DA:  MOVWF  FAD
+00DC:  GOTO   017A (RETURN)
+....................  
+.................... #list 
+....................  
+.................... #use delay(clock=20000000) 
+00E0:  CLRF   FEA
+00E2:  MOVLW  07
+00E4:  MOVWF  FE9
+00E6:  MOVF   FEF,W
+00E8:  BZ    0104
+00EA:  MOVLW  06
+00EC:  MOVWF  01
+00EE:  CLRF   00
+00F0:  DECFSZ 00,F
+00F2:  BRA    00F0
+00F4:  DECFSZ 01,F
+00F6:  BRA    00EE
+00F8:  MOVLW  7B
+00FA:  MOVWF  00
+00FC:  DECFSZ 00,F
+00FE:  BRA    00FC
+0100:  DECFSZ FEF,F
+0102:  BRA    00EA
+0104:  GOTO   018C (RETURN)
+....................  
+.................... #FUSES NOMCLR 
+.................... #FUSES NOWDT                    // No Watch Dog Timer 
+.................... #FUSES HS                       // High speed Osc (> 4mhz) 
+.................... #FUSES NOPROTECT                // Code not protected from reading 
+.................... #FUSES NOBROWNOUT               // No brownout reset 
+.................... #FUSES NOPUT                    // No Power Up Timer 
+.................... #FUSES NOLVP                    // Low Voltage Programming on B3(PIC16) or B5(PIC18) 
+.................... #FUSES NOWRT 
+....................  
+.................... #use rs232(baud = 9600, xmit = PIN_C6, rcv = PIN_C7) 
+....................  
+.................... void main() 
+0108:  CLRF   FF8
+010A:  BCF    FD0.7
+010C:  BSF    FB8.3
+010E:  MOVLW  08
+0110:  MOVWF  FAF
+0112:  MOVLW  02
+0114:  MOVWF  FB0
+0116:  MOVLW  A6
+0118:  MOVWF  FAC
+011A:  MOVLW  90
+011C:  MOVWF  FAB
+011E:  MOVF   FC1,W
+0120:  ANDLW  C0
+0122:  IORLW  0F
+0124:  MOVWF  FC1
+0126:  MOVLW  07
+0128:  MOVWF  FB4
+.................... { 
+....................    setup_adc_ports(NO_ANALOGS|VREF_VREF); 
+012A:  MOVF   FC1,W
+012C:  ANDLW  C0
+012E:  IORLW  3F
+0130:  MOVWF  FC1
+....................    setup_timer_3(T3_DISABLED | T3_DIV_BY_1); 
+0132:  CLRF   FB1
+....................    setup_adc_ports(NO_ANALOGS|VSS_VDD); 
+0134:  MOVF   FC1,W
+0136:  ANDLW  C0
+0138:  IORLW  0F
+013A:  MOVWF  FC1
+....................    setup_adc(ADC_OFF); 
+013C:  BCF    FC2.0
+....................    setup_psp(PSP_DISABLED); 
+013E:  BCF    F96.4
+....................    setup_wdt(WDT_OFF); 
+0140:  BCF    FD1.0
+....................    setup_timer_0(RTCC_INTERNAL); 
+0142:  MOVLW  80
+0144:  MOVWF  FD5
+....................    setup_timer_1(T1_INTERNAL|T1_DIV_BY_4); 
+0146:  MOVLW  A5
+0148:  MOVWF  FCD
+....................    setup_timer_2(T2_DIV_BY_16,241,13); 
+014A:  MOVLW  60
+014C:  IORLW  06
+014E:  MOVWF  FCA
+0150:  MOVLW  F1
+0152:  MOVWF  FCB
+....................    setup_comparator(NC_NC_NC_NC); 
+0154:  MOVLW  07
+0156:  MOVWF  FB4
+0158:  MOVF   F92,W
+015A:  MOVWF  F92
+015C:  MOVLW  10
+015E:  MOVWF  00
+0160:  DECFSZ 00,F
+0162:  BRA    0160
+0164:  NOP   
+0166:  MOVF   FB4,W
+0168:  BCF    FA1.6
+....................    setup_vref(FALSE); 
+016A:  CLRF   FB5
+....................  
+....................    while (TRUE) { 
+....................       int value = 5; 
+016C:  MOVLW  05
+016E:  MOVWF  05
+....................       printf("%d", value); 
+0170:  MOVFF  05,06
+0174:  MOVLW  18
+0176:  MOVWF  07
+0178:  BRA    002C
+....................       printf("\n"); 
+017A:  MOVLW  0A
+017C:  BTFSS  F9E.4
+017E:  BRA    017C
+0180:  MOVWF  FAD
+....................       delay_ms(1000); 
+0182:  MOVLW  04
+0184:  MOVWF  06
+0186:  MOVLW  FA
+0188:  MOVWF  07
+018A:  BRA    00E0
+018C:  DECFSZ 06,F
+018E:  BRA    0186
+0190:  BRA    016C
+....................    } 
+.................... } 
+0192:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CC3F   PLL12 CPUDIV4 USBDIV HS FCMEN IESO
+   Word  2: 1E39   NOPUT NOBROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 0700   CCP2C1 PBADEN LPT1OSC NOMCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

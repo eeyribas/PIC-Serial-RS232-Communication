@@ -1,0 +1,74 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+005     main.value
+006     @PRINTF_D_9600_31766_31767.P1
+006     main.@SCRATCH1
+007     @PRINTF_D_9600_31766_31767.P1
+007     @delay_ms1.P2
+008     @PRINTF_D_9600_31766_31767.@SCRATCH1
+009     @PRINTF_D_9600_31766_31767.@SCRATCH2
+00A     @PRINTF_D_9600_31766_31767.@SCRATCH3
+00B     @PRINTF_D_9600_31766_31767.@SCRATCH4
+00C     @DIV88.P1
+00D     @DIV88.P1
+00E     @DIV88.@SCRATCH1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @DIV88
+00002C  @PRINTF_D_9600_31766_31767
+0000E0  @delay_ms1
+000108  @cinit1
+000108  main
+00012A  @cinit2
+
+Project Directory:
+    D:\BACKUP\GitHub Calismalar\PIC-Serial(RS232)-Communication\
+
+Project Files:
+    main.c                                                  [02-Haz-24 17:27  CRC=24DCEB8A]
+    C:\Program Files (x86)\PICC\Devices\18F4550.h           [21-Haz-13 16:05  CRC=A157EDDE]
+
+Source signature=678CC746
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA
